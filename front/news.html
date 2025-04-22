@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GKS Logistics - Actualités</title>
+  <link rel="stylesheet" href="css/news.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <section class="hero">
+    <div class="shade-overlay"></div>
+    <header class="header">
+      <div class="container">
+        <div class="logo">
+          <h1>GKS <span>LOGISTICS</span></h1>
+        </div>
+        <button class="menu-toggle" aria-label="Basculer la navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+        <nav class="nav">
+          <ul>
+            <li><a href="index.html" data-translate="nav-home">Accueil</a></li>
+            <li><a href="index.html#about" data-translate="nav-about">À Propos</a></li>
+            <li><a href="index.html#services" data-translate="nav-services">Services</a></li>
+            <li><a href="careers.html" data-translate="nav-careers">Carrières</a></li>
+            <li><a href="index.html#contact" data-translate="nav-contact">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="language-toggle">
+          <button id="languageToggle" title="Switch to English"><img src="assets/english-flag.jpg" alt="English Flag" style="width: 24px; height: 24px; border-radius: 50%;"></button>
+        </div>
+      </div>
+    </header>
+  </section>
+
+  <!-- News Hero Banner -->
+  <section class="news-hero">
+    <div class="hero-slideshow">
+      <img src="assets/SHIP.png" alt="Hero Slide 1" class="hero-slide active">
+      <img src="assets/banner.png" alt="Hero Slide 2" class="hero-slide">
+      <img src="assets/plane.png" alt="Hero Slide 3" class="hero-slide">
+    </div>
+    <div class="shade-overlay"></div>
+    <div class="container">
+      <div class="news-hero-content">
+        <h1 data-translate="news-hero-title">Centre d’Actualités GKS Logistics</h1>
+        <a href="#news" class="btn pulse" data-translate="news-hero-cta">Explorer les Actualités</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- News Categories and Cards -->
+  <section id="news" class="news">
+    <div class="container">
+      <div class="category-filter">
+        <button class="category-btn active" data-category="all" data-translate="category-all">Tous</button>
+        <button class="category-btn" data-category="journee-poste" data-translate="category-journee-poste">Evénement</button>
+        <button class="category-btn" data-category="community" data-translate="category-community">Initiatives Communautaires</button>
+      </div>
+      <div class="news-cards">
+        <!-- Journée de la Poste Slideshow -->
+        <div class="card journee-poste slideshow">
+          <div class="slideshow-container">
+            <img src="assets/JDP1.jpg" alt="Journée de la Poste 1" class="slideshow-image active">
+            <img src="assets/JDP2.jpg" alt="Journée de la Poste 2" class="slideshow-image">
+            <img src="assets/JDP3.jpg" alt="Journée de la Poste 3" class="slideshow-image">
+            <img src="assets/JDP4.jpg" alt="Journée de la Poste 4" class="slideshow-image">
+          </div>
+          <div class="card-content">
+            <h3 data-translate="news-title-1">GKS Logistics à la Journée de la Poste au Mali</h3>
+            <p data-translate="news-desc-1">Découvrez notre participation dynamique à la Journée de la Poste, mettant en avant l’innovation logistique au Mali.</p>
+            <span class="news-date" data-translate="news-date-1">15 Mars 2025</span>
+          </div>
+        </div>
+        <!-- Community Initiatives Videos -->
+        <div class="card community">
+          <div class="video-container">
+            <video controls preload="metadata" muted poster="assets/JOURNEE DON DE SANG VIDEO THUMBNAIL.png" loading="lazy">
+              <source src="assets/JOURNEE DON DE SANG GKS.mp4" type="video/mp4">
+              Votre navigateur ne supporte pas la balise vidéo.
+            </video>
+            <div class="play-overlay"><i class="fas fa-play"></i></div>
+          </div>
+          <div class="card-content">
+            <h3 data-translate="news-title-2">GKS à la Journée du Don de Sang</h3>
+            <p data-translate="news-desc-2">Notre équipe s’engage pour sauver des vies lors de la journée nationale du don de sang.</p>
+            <span class="news-date" data-translate="news-date-2">10 Avril 2025</span>
+          </div>
+        </div>
+        <div class="card community">
+          <div class="video-container">
+            <video controls preload="metadata" muted poster="assets/JOURNEE CANCER DU SEIN VIDEO THUMBNAIL.png" loading="lazy">
+              <source src="assets/JOURNEE CANCER DU SEIN GKS.mp4" type="video/mp4">
+              Votre navigateur ne supporte pas la balise vidéo.
+            </video>
+            <div class="play-overlay"><i class="fas fa-play"></i></div>
+          </div>
+          <div class="card-content">
+            <h3 data-translate="news-title-3">GKS à la Journée de Sensibilisation contre le Cancer du Sein</h3>
+            <p data-translate="news-desc-3">Soutien à la sensibilisation avec des actions communautaires pour la santé des femmes.</p>
+            <span class="news-date" data-translate="news-date-3">20 Octobre 2024</span>
+          </div>
+        </div>
+        <div class="card community">
+          <div class="video-container">
+            <video controls preload="metadata" muted poster="assets/family day video thumbnail.png" loading="lazy">
+              <source src="assets/Family day GKS.mp4" type="video/mp4">
+              Votre navigateur ne supporte pas la balise vidéo.
+            </video>
+            <div class="play-overlay"><i class="fas fa-play"></i></div>
+          </div>
+          <div class="card-content">
+            <h3 data-translate="news-title-4">Family Day</h3>
+            <p data-translate="news-desc-4">Une journée mémorable pour renforcer les liens avec les familles de nos employés.</p>
+            <span class="news-date" data-translate="news-date-4">5 Juin 2024</span>
+          </div>
+        </div>
+        <div class="card journee-poste slideshow">
+          <div class="video-container">
+            <video controls preload="metadata" muted poster="assets/JOURNEE DE LA POSTE GKS VIDEO THUMBNAIL.png" loading="lazy">
+              <source src="assets/JOUNEE DE LA POSTE GKS.mp4" type="video/mp4">
+              Votre navigateur ne supporte pas la balise vidéo.
+            </video>
+            <div class="play-overlay"><i class="fas fa-play"></i></div>
+          </div>
+          <div class="card-content">
+            <h3 data-translate="news-title-5">Journée de la Poste au Mali</h3>
+            <p data-translate="news-desc-5">Moments forts de notre présence à l’événement postal national.</p>
+            <span class="news-date" data-translate="news-date-5">15 Mars 2025</span>
+          </div>
+        </div>
+        <div class="card community">
+          <div class="video-container">
+            <video controls preload="metadata" muted poster="assets/ISSIAKA COUMARE VIDEO THUMBNAIL.png" loading="lazy">
+              <source src="assets/GKS presentation video.mp4" type="video/mp4">
+              Votre navigateur ne supporte pas la balise vidéo.
+            </video>
+            <div class="play-overlay"><i class="fas fa-play"></i></div>
+          </div>
+          <div class="card-content">
+            <h3 data-translate="news-title-6">Présentation par Issiaka COUMARE</h3>
+            <p data-translate="news-desc-6">Découvrez notre nouveau magasin logistique ultramoderne à Bamako.</p>
+            <span class="news-date" data-translate="news-date-6">1 Février 2025</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chatbot -->
+  <div class="chatbot-container">
+    <div class="chatbot-toggle" id="chatbotToggle">
+      <i class="fas fa-comment"></i>
+    </div>
+    <div class="chatbot" id="chatbot">
+      <div class="chatbot-header">
+        <h3 data-translate="chatbot-title">GKS Assistant</h3>
+        <button class="chatbot-close" id="chatbotClose">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="chatbot-messages" id="chatbotMessages">
+        <div class="message bot-message">
+          <p data-translate="chatbot-welcome">Bonjour ! Bienvenue chez GKS Logistics. Comment puis-je vous aider aujourd’hui ?</p>
+        </div>
+      </div>
+      <div class="chatbot-input">
+        <input type="text" id="chatbotInput" data-translate-placeholder="chatbot-placeholder" placeholder="Tapez votre question ici..." aria-label="Entrée du chatbot">
+        <button class="chatbot-send" id="chatbotSend">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+ <footer class="footer">
+  <div class="shade-overlay"></div>
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <h3>GKS <span>LOGISTICS</span></h3>
+        <p data-translate="footer-about">Votre partenaire logistique mondial</p>
+        <div class="social-icons">
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4 data-translate="footer-links-title">Liens Utiles</h4>
+        <ul>
+          <li><a href="#services" data-translate="nav-services">Services</a></li>
+          <li><a href="#about" data-translate="nav-about">À Propos</a></li>
+          <li><a href="careers.html" data-translate="nav-careers">Carrières</a></li>
+          <li><a href="#contact" data-translate="nav-contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4 data-translate="footer-contact-title">Contactez-nous</h4>
+        <p>Email: <a href="mailto:info@gkslogistics.com">info@gkslogistics.com</a></p>
+        <p>Téléphone: +223 90929273</p>
+      </div>
+     
+  <button class="back-to-top" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+</footer>
+
+  <!-- JS Scripts -->
+  <script src="js/news.js"></script>
+</body>
+</html>
