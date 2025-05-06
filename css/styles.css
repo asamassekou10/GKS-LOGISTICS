@@ -1,6 +1,7 @@
 /* General Styles */
 body {
   font-family: 'Roboto', Arial, sans-serif;
+  overflow-x: hidden;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -8,6 +9,14 @@ body {
   color: #333333;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+img, .slider-track, .hero-slide img {
+  max-width: 100%;
+  height: auto;
+}
 .container {
   width: 90%;
   max-width: 1200px;
