@@ -952,6 +952,67 @@ contactForm.addEventListener('submit', (e) => {
   }, 3000);
 });
 
+// Contact Form Submission
+const contactForm = document.getElementById('contactForm');
+const contactConfirmation = document.getElementById('contactConfirmation');
+const currentLanguage = 'fr'; 
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const service = document.getElementById('service').value;
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!name) {
+      alert(translations[currentLanguage]['contact-name-placeholder'] + ' est requis.');
+      return;
+    }
+    if (!service) {
+      alert(translations[currentLanguage]['contact-service-placeholder'] + ' est requis.');
+      return;
+    }
+    if (!email || !emailRegex.test(email)) {
+      alert('Veuillez entrer une adresse e-mail valide.');
+      return;
+    }
+    if (!message) {
+      alert(translations[currentLanguage]['contact-message-placeholder'] + ' est requis.');
+      return;
+    }
+
+    try {
+      const response = await fetch('https://formspree.io/f/xjkyqooy', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: name,
+          service: translations[currentLanguage][`contact-service-${service}`] || service,
+          email: email,
+          message: message
+        })
+      });
+
+      if (response.ok) {
+        contactConfirmation.style.display = 'block';
+        contactForm.reset();
+        setTimeout(() => {
+          contactConfirmation.style.display = 'none';
+        }, 5000);
+      } else {
+        alert('Échec de l’envoi du message. Veuillez réessayer plus tard.');
+      }
+    } catch (error) {
+      console.error('Erreur:', error);
+      alert('Une erreur s’est produite. Veuillez réessayer plus tard.');
+    }
+  });
+}
+
 // Newsletter Form
 const newsletterForm = document.getElementById('newsletterForm');
 newsletterForm.addEventListener('submit', (e) => {
