@@ -940,18 +940,6 @@ backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-// Contact Form
-const contactForm = document.getElementById('contactForm');
-contactForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const confirmation = document.getElementById('contactConfirmation');
-  confirmation.style.display = 'block';
-  contactForm.reset();
-  setTimeout(() => {
-    confirmation.style.display = 'none';
-  }, 3000);
-});
-
 // Contact Form Submission
 const contactForm = document.getElementById('contactForm');
 const contactConfirmation = document.getElementById('contactConfirmation');
