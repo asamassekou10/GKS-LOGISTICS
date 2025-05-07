@@ -109,6 +109,7 @@ const translations = {
     'chatbot-title': 'GKS Assistant',
     'chatbot-welcome': 'Hello! Welcome to GKS Logistics. How can I assist you today?',
     'chatbot-placeholder': 'Type your question here...',
+    'chatbot-fallback': 'Sorry, I didn’t understand that. Could you rephrase or contact us at sales@gkslogistics.com?',
     // Footer
     'footer-about': 'Your global logistics partner',
     'footer-links-title': 'Useful Links',
@@ -118,6 +119,7 @@ const translations = {
     'newsletter-cta': 'Subscribe',
     'newsletter-confirmation': 'Thank you for subscribing!',
     'footer-copy': '© 2025 GKS Logistics. All rights reserved.'
+    
   },
   fr: {
     // Navigation
@@ -229,6 +231,7 @@ const translations = {
     'chatbot-title': 'GKS Assistant',
     'chatbot-welcome': 'Bonjour ! Bienvenue chez GKS Logistics. Comment puis-je vous aider aujourd’hui ?',
     'chatbot-placeholder': 'Tapez votre question ici...',
+    'chatbot-fallback': 'Désolé, je n’ai pas compris. Pouvez-vous reformuler ou nous contacter à sales@gkslogistics.com ?',
     // Footer
     'footer-about': 'Votre partenaire logistique mondial',
     'footer-links-title': 'Liens Utiles',
@@ -243,12 +246,25 @@ const translations = {
 // Chatbot Responses (100+ pre-defined answers)
 const chatbotResponses = [
   {
-    keywords: ['who', 'gks', 'logistics', 'company'],
+    keywords: ['hi', 'hello', 'hey', 'bonjour', 'salut', 'bonsoir', 'Good morning', 'Good afternoon','Good evening', 'Bon après-midi' ],
+    en: () => {
+      const hour = new Date().getHours();
+      const timeGreeting = hour < 12 ? 'Good morning' : hour < 18 ? 'Good afternoon' : 'Good evening';
+      return `${timeGreeting}! Welcome to GKS Logistics. How can I assist you today?`;
+    },
+    fr: () => {
+      const hour = new Date().getHours();
+      const timeGreeting = hour < 12 ? 'Bonjour' : hour < 18 ? 'Bon après-midi' : 'Bonsoir';
+      return `${timeGreeting} ! Bienvenue chez GKS Logistics. Comment puis-je vous aider aujourd’hui ?`;
+    }
+  },
+  {
+    keywords: ['who', 'qui', 'presentation', 'gks', 'logistics', 'company'],
     en: 'GKS Logistics is a global logistics company founded in 2019 in Bamako, Mali. We specialize in transport and logistics, offering air freight, sea freight, land transport, and warehousing services.',
     fr: 'GKS Logistics est une entreprise logistique mondiale fondée en 2019 à Bamako, Mali. Nous sommes spécialisés dans le transport et la logistique, offrant des services de fret aérien, maritime, terrestre et d’entreposage.'
   },
   {
-    keywords: ['founded', 'when', 'gks'],
+    keywords: ['founded', 'when', 'gks', 'fondé', 'fondation'],
     en: 'GKS Logistics was founded in 2019 in Bamako, Mali.',
     fr: 'GKS Logistics a été fondé en 2019 à Bamako, Mali.'
   },
@@ -263,27 +279,27 @@ const chatbotResponses = [
     fr: 'Notre vision est de redéfinir la logistique grâce à la technologie et la durabilité.'
   },
   {
-    keywords: ['commitment', 'gks'],
+    keywords: ['commitment', 'gks', 'engagement', 'fiabilité'],
     en: 'We are committed to ensuring excellence and reliability at every step.',
     fr: 'Nous nous engageons à garantir l’excellence et la fiabilité à chaque étape.'
   },
   {
-    keywords: ['award', '2020', 'gks'],
+    keywords: ['award', '2020', 'gks', 'expérience', 'expertise', 'récompenses' ],
     en: 'In 2020, GKS Logistics received the award for the best logistics company due to our experience and expertise.',
     fr: 'En 2020, GKS Logistics a reçu le prix de la meilleure entreprise de logistique grâce à notre expérience et notre expertise.'
   },
   {
-    keywords: ['services', 'gks', 'offer'],
+    keywords: ['services', 'gks', 'offer', 'offre', 'service', 'fret'],
     en: 'GKS Logistics offers air freight, sea freight, land transport, and warehousing services tailored to your needs.',
     fr: 'GKS Logistics propose des services de fret aérien, maritime, terrestre et d’entreposage adaptés à vos besoins.'
   },
   {
-    keywords: ['air', 'freight', 'details'],
+    keywords: ['air', 'freight', 'details', 'fret', 'livraisons'],
     en: 'Our air freight service ensures fast and secure international deliveries with 98% on-time performance.',
     fr: 'Notre service de fret aérien garantit des livraisons internationales rapides et sécurisées avec un taux de ponctualité de 98 %.'
   },
   {
-    keywords: ['sea', 'freight', 'details'],
+    keywords: ['sea', 'freight', 'details', 'mer', 'cargaisons', 'efficacité'],
     en: 'Sea freight is cost-effective for large cargo, with 95% efficiency.',
     fr: 'Le fret maritime est économique pour les grandes cargaisons, avec une efficacité de 95 %.'
   },
@@ -293,12 +309,12 @@ const chatbotResponses = [
     fr: 'Notre service de transport terrestre offre un réseau régional optimisé avec une couverture de 97 %.'
   },
   {
-    keywords: ['warehousing', 'details'],
+    keywords: ['warehousing', 'details', 'entreposage', 'entrepots', 'sécurité'],
     en: 'We offer modern and secure warehousing solutions with 99% security.',
     fr: 'Nous proposons des solutions d’entreposage modernes et sécurisées avec une sécurité de 99 %.'
   },
   {
-    keywords: ['countries', 'gks', 'operate'],
+    keywords: ['countries', 'gks', 'operate', 'pays'],
     en: 'GKS Logistics operates in over 10 countries, including Mali, Turkey, France, USA, Côte d’Ivoire, Guinea, Burkina Faso, and Niger.',
     fr: 'GKS Logistics opère dans plus de 10 pays, dont le Mali, la Turquie, la France, les États-Unis, la Côte d’Ivoire, la Guinée, le Burkina Faso et le Niger.'
   },
@@ -308,52 +324,52 @@ const chatbotResponses = [
     fr: 'Au Mali, nous fournissons des services logistiques complets pour les opérations locales. Contactez-nous à mali@gkslogistics.com.'
   },
   {
-    keywords: ['turkey', 'services'],
+    keywords: ['turkey', 'turquie'],
     en: 'In Turkey, we offer dynamic connections between Africa and Asia. Reach us at turkey@gkslogistics.com.',
     fr: 'En Turquie, nous offrons des liaisons dynamiques entre l’Afrique et l’Asie. Contactez-nous à turkey@gkslogistics.com.'
   },
   {
-    keywords: ['france', 'services'],
+    keywords: ['france'],
     en: 'In France, we provide advanced logistics solutions for Europe. Email us at france@gkslogistics.com.',
     fr: 'En France, nous proposons des solutions logistiques avancées pour l’Europe. Envoyez-nous un email à france@gkslogistics.com.'
   },
   {
-    keywords: ['usa', 'services'],
+    keywords: ['usa', 'États-Unis'],
     en: 'In the USA, we have a robust network for international trade. Contact usa@gkslogistics.com.',
     fr: 'Aux États-Unis, nous disposons d’un réseau robuste pour le commerce international. Contactez usa@gkslogistics.com.'
   },
   {
-    keywords: ['côte', 'ivoire', 'services'],
+    keywords: ['côte', 'ivoire'],
     en: 'In Côte d’Ivoire, our logistics are tailored to regional needs. Email ivorycoast@gkslogistics.com.',
     fr: 'En Côte d’Ivoire, notre logistique est adaptée aux besoins régionaux. Envoyez un email à ivorycoast@gkslogistics.com.'
   },
   {
-    keywords: ['guinea', 'services'],
+    keywords: ['guinea', 'Guinée'],
     en: 'In Guinea, we offer reliable logistics services. Contact guinea@gkslogistics.com.',
     fr: 'En Guinée, nous proposons des services logistiques fiables. Contactez guinea@gkslogistics.com.'
   },
   {
-    keywords: ['burkina', 'faso', 'services'],
+    keywords: ['burkina', 'faso'],
     en: 'In Burkina Faso, we provide logistics solutions for regional trade. Email burkina@gkslogistics.com.',
     fr: 'Au Burkina Faso, nous fournissons des solutions logistiques pour le commerce régional. Envoyez un email à burkina@gkslogistics.com.'
   },
   {
-    keywords: ['niger', 'services'],
+    keywords: ['niger'],
     en: 'In Niger, we offer logistics services in West Africa. Contact niger@gkslogistics.com.',
     fr: 'Au Niger, nous proposons des services logistiques en Afrique de l’Ouest. Contactez niger@gkslogistics.com.'
   },
   {
-    keywords: ['contact', 'gks'],
-    en: 'You can contact GKS Logistics at info@gkslogistics.com or call +223 90929273.',
-    fr: 'Vous pouvez contacter GKS Logistics à info@gkslogistics.com ou appeler le +223 90929273.'
+    keywords: ['contact', 'gks', 'contacter', 'email', 'numéro', 'number'],
+    en: 'You can contact GKS Logistics at sales@gkslogistics.com or call +223 90929273.',
+    fr: 'Vous pouvez contacter GKS Logistics à sales@gkslogistics.com ou appeler le +223 90929273.'
   },
   {
-    keywords: ['careers', 'jobs', 'gks'],
+    keywords: ['careers', 'jobs', 'gks', 'carrière', 'travaille', 'postuler'],
     en: 'Explore career opportunities at GKS Logistics on our Careers page: careers.html.',
     fr: 'Découvrez les opportunités de carrière chez GKS Logistics sur notre page Carrières : careers.html.'
   },
   {
-    keywords: ['quote', 'request'],
+    keywords: ['quote', 'request', 'devis', 'rendez-vous', 'formulaire'],
     en: 'To request a quote, visit the Contact section and fill out the form.',
     fr: 'Pour demander un devis, rendez-vous dans la section Contact et remplissez le formulaire.'
   },
@@ -363,37 +379,37 @@ const chatbotResponses = [
     fr: 'Inscrivez-vous à notre newsletter dans le pied de page pour rester informé des actualités de GKS Logistics.'
   },
   {
-    keywords: ['website', 'navigate'],
+    keywords: ['website', 'navigate','site'],
     en: 'Use the navigation menu to explore Services, About, Careers, News, and Contact sections.',
     fr: 'Utilisez le menu de navigation pour explorer les sections Services, À Propos, Carrières, Actualités et Contact.'
   },
   {
-    keywords: ['air', 'freight', 'cost'],
+    keywords: ['air', 'freight', 'cost', 'aérien', 'prix', 'coûts', 'combien', 'tarifs'],
     en: 'Air freight costs depend on cargo size, weight, and destination. Request a quote in the Contact section for details.',
     fr: 'Les coûts du fret aérien dépendent de la taille, du poids et de la destination de la cargaison. Demandez un devis dans la section Contact pour plus de détails.'
   },
   {
-    keywords: ['sea', 'freight', 'cost'],
+    keywords: ['sea', 'freight', 'cost', 'maritime', 'prix', 'coûts', 'combien', 'tarifs'],
     en: 'Sea freight is cost-effective for large shipments. Contact us for a personalized quote.',
     fr: 'Le fret maritime est économique pour les grandes expéditions. Contactez-nous pour un devis personnalisé.'
   },
   {
-    keywords: ['land', 'transport', 'cost'],
+    keywords: ['land', 'transport', 'cost', 'terrestre', 'prix', 'coûts', 'combien', 'tarifs'],
     en: 'Land transport costs vary by distance and cargo type. Fill out the Contact form for a quote.',
     fr: 'Les coûts du transport terrestre varient selon la distance et le type de cargaison. Remplissez le formulaire de Contact pour un devis.'
   },
   {
-    keywords: ['warehousing', 'cost'],
+    keywords: ['warehousing', 'cost', 'entreposage', 'stockage', ],
     en: 'Warehousing costs depend on storage duration and space requirements. Email info@gkslogistics.com for pricing.',
-    fr: 'Les coûts d’entreposage dépendent de la durée de stockage et des besoins d’espace. Envoyez un email à info@gkslogistics.com pour les tarifs.'
+    fr: 'Les coûts d’entreposage dépendent de la durée de stockage et des besoins d’espace. Envoyez un email à sales@gkslogistics.com pour les tarifs.'
   },
   {
-    keywords: ['track', 'shipment'],
+    keywords: ['track', 'shipment', 'suivre', 'expédition'],
     en: 'To track your shipment, contact our team at info@gkslogistics.com with your shipment details.',
-    fr: 'Pour suivre votre expédition, contactez notre équipe à info@gkslogistics.com avec les détails de votre expédition.'
+    fr: 'Pour suivre votre expédition, contactez notre équipe à sales@gkslogistics.com avec les détails de votre expédition.'
   },
   {
-    keywords: ['customs', 'services'],
+    keywords: ['customs', 'services', 'douane', 'dédouanement', 'internationale'],
     en: 'We offer customs clearance services to simplify international shipping. Contact us for details.',
     fr: 'Nous proposons des services de dédouanement pour simplifier l’expédition internationale. Contactez-nous pour plus de détails.'
   },
@@ -543,17 +559,17 @@ const chatbotResponses = [
     fr: 'Les demandes de devis sont généralement traitées sous 24 à 48 heures.'
   },
   {
-    keywords: ['bulk', 'shipping'],
+    keywords: ['bulk', 'shipping', 'expédition'],
     en: 'We specialize in bulk shipping via sea freight. Contact us for a quote.',
     fr: 'Nous sommes spécialisés dans l’expédition en vrac par fret maritime. Contactez-nous pour un devis.'
   },
   {
-    keywords: ['express', 'delivery'],
+    keywords: ['express', 'delivery', 'livraison'],
     en: 'Our air freight service offers express delivery options. Email us for details.',
     fr: 'Notre service de fret aérien propose des options de livraison express. Envoyez-nous un email pour plus de détails.'
   },
   {
-    keywords: ['regional', 'logistics'],
+    keywords: ['regional', 'logistics', 'régionale'],
     en: 'Our regional logistics focus on West Africa with land transport and warehousing.',
     fr: 'Notre logistique régionale se concentre sur l’Afrique de l’Ouest avec le transport terrestre et l’entreposage.'
   },
@@ -572,13 +588,14 @@ const chatbotResponses = [
     en: 'Our client portal is coming soon. Contact us for updates.',
     fr: 'Notre portail client arrivera bientôt. Contactez-nous pour les mises à jour.'
   },
+
   {
     keywords: ['tracking', 'system'],
     en: 'We’re developing a tracking system. For now, email info@gkslogistics.com for updates.',
     fr: 'Nous développons un système de suivi. Pour l’instant, envoyez un email à info@gkslogistics.com pour les mises à jour.'
   },
   {
-    keywords: ['mobile', 'app'],
+    keywords: ['mobile', 'app', 'application'],
     en: 'A GKS Logistics mobile app is in development. Stay tuned for updates.',
     fr: 'Une application mobile GKS Logistics est en développement. Restez à l’écoute pour les mises à jour.'
   },
@@ -588,7 +605,7 @@ const chatbotResponses = [
     fr: 'GKS Logistics détient des certifications industrielles pour la qualité et la sécurité. Contactez-nous pour plus de détails.'
   },
   {
-    keywords: ['team', 'gks'],
+    keywords: ['team', 'gks', 'équipe'],
     en: 'Our team is dedicated to your success, with experts in logistics and customer service.',
     fr: 'Notre équipe est dédiée à votre succès, avec des experts en logistique et service client.'
   },
@@ -598,27 +615,27 @@ const chatbotResponses = [
     fr: 'GKS Logistics a été fondé en 2019 et s’est étendu mondialement d’ici 2025. Voir la section À Propos.'
   },
   {
-    keywords: ['values', 'gks'],
+    keywords: ['values', 'gks', 'fiabilité', 'valeurs', 'satisfaction', 'satisfait'],
     en: 'Our values include reliability, innovation, and customer satisfaction.',
     fr: 'Nos valeurs incluent la fiabilité, l’innovation et la satisfaction client.'
   },
   {
-    keywords: ['safety', 'cargo'],
+    keywords: ['safety', 'cargo', 'sécurité'],
     en: 'We prioritize cargo safety with secure warehousing and reliable transport.',
     fr: 'Nous priorisons la sécurité des cargaisons avec un entreposage sécurisé et un transport fiable.'
   },
   {
-    keywords: ['consulting', 'logistics'],
+    keywords: ['consulting', 'logistics', 'conseil'],
     en: 'We offer logistics consulting services. Email info@gkslogistics.com for inquiries.',
     fr: 'Nous proposons des services de conseil en logistique. Envoyez un email à info@gkslogistics.com pour les demandes.'
   },
   {
-    keywords: ['charity', 'gks'],
+    keywords: ['charity', 'gks', 'communautaires', 'charité', 'caritatifs'],
     en: 'GKS Logistics supports community initiatives. Contact us for our charity programs.',
     fr: 'GKS Logistics soutient des initiatives communautaires. Contactez-nous pour nos programmes caritatifs.'
   },
   {
-    keywords: ['events', 'gks'],
+    keywords: ['events', 'gks', 'événements', 'Actualités'],
     en: 'Stay updated on GKS events via our News section or newsletter.',
     fr: 'Restez informé des événements GKS via notre section Actualités ou newsletter.'
   },
@@ -628,23 +645,23 @@ const chatbotResponses = [
     fr: 'Notre blog arrivera bientôt. Inscrivez-vous à notre newsletter pour les mises à jour.'
   },
   {
-    keywords: ['press', 'releases'],
+    keywords: ['press', 'releases', 'communiqués'],
     en: 'Check our News section for the latest press releases.',
     fr: 'Consultez notre section Actualités pour les derniers communiqués de presse.'
   },
   {
     keywords: ['faq', 'gks'],
     en: 'Visit our website for FAQs or email info@gkslogistics.com for help.',
-    fr: 'Visitez notre site pour les FAQ ou envoyez un email à info@gkslogistics.com pour de l’aide.'
+    fr: 'Visitez notre site pour les FAQ ou envoyez un email à sales@gkslogistics.com pour de l’aide.'
   },
   {
     keywords: ['terms', 'service'],
-    en: 'Our terms of service are available upon request. Email info@gkslogistics.com.',
+    en: 'Our terms of service are available upon request. Email sales@gkslogistics.com.',
     fr: 'Nos conditions de service sont disponibles sur demande. Envoyez un email à info@gkslogistics.com.'
   },
   {
-    keywords: ['privacy', 'policy'],
-    en: 'Our privacy policy is available upon request. Contact info@gkslogistics.com.',
+    keywords: ['privacy', 'policy', 'confidentialité'],
+    en: 'Our privacy policy is available upon request. Contact sales@gkslogistics.com.',
     fr: 'Notre politique de confidentialité est disponible sur demande. Contactez info@gkslogistics.com.'
   },
   {
@@ -665,7 +682,7 @@ const chatbotResponses = [
 ];
 // Language Detection Function
 function detectLanguage(input) {
-  const frenchWords = ['bonjour', 'comment', 'services', 'contactez', 'devis', 'fret', 'entreposage', 'aérien', 'maritime', 'terrestre', 'mali', 'france', 'turquie', 'guinée', 'burkina', 'niger', 'côte', 'ivoire', 'à', 'pour', 'notre', 'votre', 'est', 'sont'];
+  const frenchWords = ['bonjour', 'comment', 'services', 'contactez', 'devis', 'fret', 'entreposage','mer', 'aérien', 'maritime', 'terrestre', 'mali', 'france', 'turquie', 'guinée', 'burkina', 'niger', 'côte', 'ivoire', 'à', 'pour', 'notre', 'votre', 'est', 'sont', 'prix', 'tarrif'];
   const englishWords = ['hello', 'how', 'services', 'contact', 'quote', 'freight', 'warehousing', 'air', 'sea', 'land', 'mali', 'france', 'turkey', 'guinea', 'burkina', 'niger', 'ivory', 'coast', 'for', 'our', 'your', 'is', 'are'];
   
   const inputLower = input.toLowerCase();
@@ -687,13 +704,16 @@ function detectLanguage(input) {
 // Chatbot Response Matching
 function getChatbotResponse(input) {
   const inputLower = input.toLowerCase();
+  console.log('Input:', inputLower); // Debug
   for (const response of chatbotResponses) {
     const matches = response.keywords.some(keyword => inputLower.includes(keyword.toLowerCase()));
+    console.log('Keywords:', response.keywords, 'Matches:', matches); // Debug
     if (matches) {
       const lang = detectLanguage(input);
-      return response[lang];
-    }
+      console.log('Detected Language:', lang); // Debug
+      return typeof response[lang] === 'function' ? response[lang]() : response[lang];    }
   }
+  console.log('Fallback triggered'); // Debug
   return translations[currentLang]['chatbot-fallback'];
 }
 
@@ -722,8 +742,6 @@ function updateLanguage(lang) {
     }
   });
 
-
-  
   // Update chatbot content
   const chatbotTitle = document.querySelector('.chatbot-header h3');
   if (chatbotTitle) chatbotTitle.innerHTML = translations[lang]['chatbot-title'];
@@ -942,8 +960,6 @@ backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-
-// Contact Form Submission
 // Contact Form Submission
 const contactForm = document.getElementById('contactForm');
 const contactConfirmation = document.getElementById('contactConfirmation');
@@ -1042,7 +1058,7 @@ chatbotClose.addEventListener('click', () => {
 function addMessage(text, isUser) {
   const message = document.createElement('div');
   message.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
-  message.textContent = text;
+  message.textContent = text || translations[currentLang]['chatbot-fallback'] || 'Error: No response available.';
   chatbotMessages.appendChild(message);
   chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
 }
@@ -1150,3 +1166,4 @@ countryModal.addEventListener('click', (e) => {
     countryModal.classList.remove('active');
   }
 });
+
