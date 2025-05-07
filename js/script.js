@@ -722,6 +722,8 @@ function updateLanguage(lang) {
     }
   });
 
+
+  
   // Update chatbot content
   const chatbotTitle = document.querySelector('.chatbot-header h3');
   if (chatbotTitle) chatbotTitle.innerHTML = translations[lang]['chatbot-title'];
@@ -940,6 +942,8 @@ backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
+
+// Contact Form Submission
 // Contact Form Submission
 const contactForm = document.getElementById('contactForm');
 const contactConfirmation = document.getElementById('contactConfirmation');
